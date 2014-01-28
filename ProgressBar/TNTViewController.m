@@ -43,9 +43,9 @@
 }
 
 -(void)animateBar1 {
-    CGRect newFrame = self.stripe2.frame;
-    newFrame.origin.x = 0;
-    self.stripe2.frame = newFrame;
+//    CGRect newFrame = self.stripe2.frame;
+//    newFrame.origin.x = (self.stripe2.frame.origin.x == 140 ? 0 : 140);
+//    self.stripe2.frame = newFrame;
     
     [UIView animateWithDuration:2.0
                           delay:0.0
@@ -56,12 +56,15 @@
                          [self animateBar2];
                      }
      ];
-}
+    
+    CGRect newFrame = self.stripe2.frame;
+    newFrame.origin.x = (self.stripe2.frame.origin.x == 140 ? 0 : 140);
+    self.stripe2.frame = newFrame;}
 
 -(void)animateBar2 {
-    CGRect newFrame = self.stripe1.frame;
-    newFrame.origin.x = 0;
-    self.stripe1.frame = newFrame;
+//    CGRect newFrame = self.stripe1.frame;
+//    newFrame.origin.x = (self.stripe1.frame.origin.x == 140 ? 0 : 140);
+//    self.stripe1.frame = newFrame;
     
     [UIView animateWithDuration:2.0
                           delay:0.0
@@ -72,6 +75,31 @@
                          [self animateBar1];
                      }
      ];
+    
+    CGRect newFrame = self.stripe1.frame;
+    newFrame.origin.x = (self.stripe1.frame.origin.x == 140 ? 0 : 140);
+    self.stripe1.frame = newFrame;
+
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
