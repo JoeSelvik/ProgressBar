@@ -42,6 +42,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Progress" id="T6s-yw-DbU"/>
+                    <connections>
+                        <outlet property="stripe1" destination="sPo-gs-5Nm" id="Q5d-77-79F"/>
+                        <outlet property="stripe2" destination="6Ow-4D-m3j" id="XRt-HQ-6DN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
