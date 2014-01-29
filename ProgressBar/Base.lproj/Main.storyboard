@@ -34,18 +34,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ITp-pS-unV" secondAttribute="trailing" id="Yh1-sP-flV"/>
-                            <constraint firstItem="ITp-pS-unV" firstAttribute="top" secondItem="bS8-No-y5G" secondAttribute="bottom" id="kZy-ut-X43"/>
+                            <constraint firstItem="ITp-pS-unV" firstAttribute="top" secondItem="bS8-No-y5G" secondAttribute="bottom" id="egi-qd-VVN"/>
                             <constraint firstItem="ITp-pS-unV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mCV-aT-fd6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Progress" id="T6s-yw-DbU"/>
                     <connections>
-                        <outlet property="stripe2" destination="Oia-Mu-HDe" id="71T-14-jRM"/>
+                        <outlet property="loadBar" destination="ITp-pS-unV" id="hxL-gd-4wM"/>
+                        <outlet property="stripe" destination="Oia-Mu-HDe" id="o1h-x2-xEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214" y="196"/>
+            <point key="canvasLocation" x="216" y="196"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4CH-57-Oeq">
