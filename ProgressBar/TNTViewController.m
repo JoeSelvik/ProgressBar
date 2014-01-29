@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    _translateDistance = 280;
+    _translateDistance = 450;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,52 +35,20 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //    while (1) {
-    //        [self animateBar];
-    //    }
-    
-    [self animateBar1];
+    [self animateBar];
 }
 
--(void)animateBar1 {
-//    CGRect newFrame = self.stripe2.frame;
-//    newFrame.origin.x = (self.stripe2.frame.origin.x == 140 ? 0 : 140);
-//    self.stripe2.frame = newFrame;
-    
-    [UIView animateWithDuration:2.0
+-(void)animateBar {
+    [UIView animateWithDuration:1.5
                           delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         _stripe1.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
-                     } completion:^(BOOL finished) {
-                         [self animateBar2];
-                     }
-     ];
-    
-    CGRect newFrame = self.stripe2.frame;
-    newFrame.origin.x = (self.stripe2.frame.origin.x == 140 ? 0 : 140);
-    self.stripe2.frame = newFrame;}
-
--(void)animateBar2 {
-//    CGRect newFrame = self.stripe1.frame;
-//    newFrame.origin.x = (self.stripe1.frame.origin.x == 140 ? 0 : 140);
-//    self.stripe1.frame = newFrame;
-    
-    [UIView animateWithDuration:2.0
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
+                        options:UIViewAnimationOptionRepeat
                      animations:^{
                          _stripe2.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
-                     } completion:^(BOOL finished) {
-                         [self animateBar1];
-                     }
+                     } completion:nil
      ];
-    
-    CGRect newFrame = self.stripe1.frame;
-    newFrame.origin.x = (self.stripe1.frame.origin.x == 140 ? 0 : 140);
-    self.stripe1.frame = newFrame;
-
 }
+
+
 
 @end
 
