@@ -30,15 +30,15 @@
     _activityBarToggle = 1;
     
     // Progmmatic way to make UIView
-    CGRect frameRectForBarHidden = CGRectMake(0, 300, 320, 0);
-    _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBarHidden];
-    _dropDownBarView.backgroundColor = [UIColor colorWithRed:122.0/255.0 green:17.0/255.0 blue:27.0/255.0 alpha:1.0];
-    [self.view addSubview:_dropDownBarView];
-    
-    CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
-    _dropDownStripe = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stripe1"]];
-    _dropDownStripe.frame = frameRectForStripeHidden;
-    [self.view addSubview:_dropDownStripe];
+//    CGRect frameRectForBarHidden = CGRectMake(0, 300, 320, 0);
+//    _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBarHidden];
+//    _dropDownBarView.backgroundColor = [UIColor colorWithRed:122.0/255.0 green:17.0/255.0 blue:27.0/255.0 alpha:1.0];
+//    [self.view addSubview:_dropDownBarView];
+//    
+//    CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
+//    _dropDownStripe = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stripe1"]];
+//    _dropDownStripe.frame = frameRectForStripeHidden;
+//    [self.view addSubview:_dropDownStripe];
     
 }
 
@@ -57,6 +57,17 @@
 -(void)animateBar {
     
     if (self.activityBarToggle) {
+        
+        CGRect frameRectForBarHidden = CGRectMake(0, 300, 320, 0);
+        _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBarHidden];
+        _dropDownBarView.backgroundColor = [UIColor colorWithRed:122.0/255.0 green:17.0/255.0 blue:27.0/255.0 alpha:1.0];
+        [self.view addSubview:_dropDownBarView];
+        
+        CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
+        _dropDownStripe = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stripe1"]];
+        _dropDownStripe.frame = frameRectForStripeHidden;
+        [self.view addSubview:_dropDownStripe];
+        
         CGRect frameRectForBarShown = CGRectMake(0, 300, 320, 2);
         CGRect frameRectForStripeShown = CGRectMake(-50, 300, 50, 2);
         
@@ -80,14 +91,17 @@
         CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
         
         [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveLinear
                          animations:^() {
                              [self.dropDownBarView setFrame:frameRectForBarHidden];
                              [self.dropDownStripe setFrame:frameRectForStripeHidden];
-                         }];
-        
-        //[self.view.layer removeAllAnimations];
-        [self.dropDownStripe setFrame:frameRectForStripeHidden];
-        
+                         }
+                         completion:^(BOOL finished) {
+                             [self.dropDownBarView removeFromSuperview];
+                             [self.dropDownStripe removeFromSuperview];
+                         }
+         ];
         self.activityBarToggle = 1;
     }
 }
