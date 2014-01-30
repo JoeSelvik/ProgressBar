@@ -10,9 +10,12 @@
 
 @interface TNTViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *loadBar;
-@property (weak, nonatomic) IBOutlet UIImageView *stripe;
+// Progmmatic way to make activity bar
+@property (strong, nonatomic) UIView *dropDownBarView;
+@property (strong, nonatomic) UIImageView *dropDownStripe;
+
 @property CGFloat translateDistance;
+@property float activityBarToggle;
 
 @end
 
@@ -21,12 +24,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
     _translateDistance = 450;
     
-    //[self.loadBar setHidden:YES];
-    _loadBar.alpha = 0;
+    _activityBarToggle = 1;
+    
+    // Progmmatic way to make UIView
+    CGRect frameRectForBar = CGRectMake(0, 300, 320, 0);
+    _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBar];
+    _dropDownBarView.backgroundColor = [UIColor colorWithRed:122.0/255.0 green:17.0/255.0 blue:27.0/255.0 alpha:1.0];
+    [self.view addSubview:_dropDownBarView];
+    
+    CGRect frameRectForStrip = CGRectMake(100, 300, 50, 2);
+    _dropDownStripe = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stripe1"]];
+    _dropDownStripe.frame = frameRectForStrip;
+    [self.view addSubview:_dropDownStripe];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,45 +56,41 @@
 
 -(void)animateBar {
     
-    //[self.loadBar setHidden:NO];
-    //self.loadBar.alpha = 1.0;
-    
-    [UIView animateWithDuration:0.1
-                     animations:^() {
-        self.loadBar.alpha = 1.0;
-    }];
-    
 //    [UIView animateWithDuration:0.1
-//                          delay:0.0
-//                        options:UIViewAnimationOptionAutoreverse
 //                     animations:^() {
-//                         self.loadBar.alpha = 1.0;
+//        self.loadBar.alpha = 1.0;
+//    }];
+    
+//    [UIView animateWithDuration:1.5
+//                          delay:0.0
+//                        options:UIViewAnimationOptionRepeat
+//                     animations:^{
+//                         _stripe.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
 //                     } completion:nil
 //     ];
     
-    [UIView animateWithDuration:1.5
-                          delay:0.0
-                        options:UIViewAnimationOptionRepeat
-                     animations:^{
-                         _stripe.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
-                     } completion:nil
-     ];
+    if (self.activityBarToggle) {
+        CGRect frameRect = CGRectMake(0, 300, 320, 2);
+        
+        [UIView animateWithDuration:0.5
+                         animations:^() {
+                             [self.dropDownBarView setFrame:frameRect];
+                         }];
+        self.activityBarToggle = 0;
+    } else {
+        CGRect frameRect = CGRectMake(0, 300, 320, 0);
+        
+        [UIView animateWithDuration:0.5
+                         animations:^() {
+                             [self.dropDownBarView setFrame:frameRect];
+                         }];
+        self.activityBarToggle = 1;
+    }
 }
 
 
 
 @end
-
-
-//CGRect frame = YourView.frame;
-//[UIView beginAnimations:nil context:NULL];
-//[UIView setAnimationDuration:1.0];
-//
-//frame.origin.x = 0; //
-//pushView.frame = frame;
-//self.YourView.frame = CGRectMake(250, 45, 500, 960);
-//[UIView commitAnimations];
-
 
 
 

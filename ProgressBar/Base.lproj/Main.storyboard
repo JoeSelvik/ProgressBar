@@ -15,34 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITp-pS-unV">
-                                <rect key="frame" x="0.0" y="64" width="320" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stripe1" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-Mu-HDe">
-                                        <rect key="frame" x="110" y="0.0" width="50" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.47843137254901957" green="0.066666666666666666" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="eo6-mt-9xy"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ITp-pS-unV" secondAttribute="trailing" id="Yh1-sP-flV"/>
-                            <constraint firstItem="ITp-pS-unV" firstAttribute="top" secondItem="bS8-No-y5G" secondAttribute="bottom" id="egi-qd-VVN"/>
-                            <constraint firstItem="ITp-pS-unV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mCV-aT-fd6"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Progress" id="T6s-yw-DbU"/>
-                    <connections>
-                        <outlet property="loadBar" destination="ITp-pS-unV" id="hxL-gd-4wM"/>
-                        <outlet property="stripe" destination="Oia-Mu-HDe" id="o1h-x2-xEb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,9 +42,6 @@
             <point key="canvasLocation" x="-335" y="196"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="stripe1" width="100" height="16"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
