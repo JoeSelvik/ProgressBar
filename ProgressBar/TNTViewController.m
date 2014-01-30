@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    _translateDistance = 450;
+    _translateDistance = 420;
     
     _activityBarToggle = 1;
     
@@ -68,7 +68,7 @@
         
         [UIView animateWithDuration:1.0
                               delay:0.0
-                            options:UIViewAnimationOptionRepeat
+                            options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              self.dropDownStripe.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
                          } completion:nil
@@ -76,12 +76,18 @@
         
         self.activityBarToggle = 0;
     } else {
-        CGRect frameRect = CGRectMake(0, 300, 320, 0);
+        CGRect frameRectForBarHidden = CGRectMake(0, 300, 320, 0);
+        CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
         
         [UIView animateWithDuration:0.5
                          animations:^() {
-                             [self.dropDownBarView setFrame:frameRect];
+                             [self.dropDownBarView setFrame:frameRectForBarHidden];
+                             [self.dropDownStripe setFrame:frameRectForStripeHidden];
                          }];
+        
+        //[self.view.layer removeAllAnimations];
+        [self.dropDownStripe setFrame:frameRectForStripeHidden];
+        
         self.activityBarToggle = 1;
     }
 }
