@@ -30,14 +30,14 @@
     _activityBarToggle = 1;
     
     // Progmmatic way to make UIView
-    CGRect frameRectForBar = CGRectMake(0, 300, 320, 0);
-    _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBar];
+    CGRect frameRectForBarHidden = CGRectMake(0, 300, 320, 0);
+    _dropDownBarView = [[UIView alloc] initWithFrame:frameRectForBarHidden];
     _dropDownBarView.backgroundColor = [UIColor colorWithRed:122.0/255.0 green:17.0/255.0 blue:27.0/255.0 alpha:1.0];
     [self.view addSubview:_dropDownBarView];
     
-    CGRect frameRectForStrip = CGRectMake(100, 300, 50, 2);
+    CGRect frameRectForStripeHidden = CGRectMake(-50, 300, 50, 0);
     _dropDownStripe = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stripe1"]];
-    _dropDownStripe.frame = frameRectForStrip;
+    _dropDownStripe.frame = frameRectForStripeHidden;
     [self.view addSubview:_dropDownStripe];
     
 }
@@ -56,26 +56,24 @@
 
 -(void)animateBar {
     
-//    [UIView animateWithDuration:0.1
-//                     animations:^() {
-//        self.loadBar.alpha = 1.0;
-//    }];
-    
-//    [UIView animateWithDuration:1.5
-//                          delay:0.0
-//                        options:UIViewAnimationOptionRepeat
-//                     animations:^{
-//                         _stripe.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
-//                     } completion:nil
-//     ];
-    
     if (self.activityBarToggle) {
-        CGRect frameRect = CGRectMake(0, 300, 320, 2);
+        CGRect frameRectForBarShown = CGRectMake(0, 300, 320, 2);
+        CGRect frameRectForStripeShown = CGRectMake(-50, 300, 50, 2);
         
         [UIView animateWithDuration:0.5
                          animations:^() {
-                             [self.dropDownBarView setFrame:frameRect];
+                             [self.dropDownBarView setFrame:frameRectForBarShown];
+                             [self.dropDownStripe setFrame:frameRectForStripeShown];
                          }];
+        
+        [UIView animateWithDuration:1.0
+                              delay:0.0
+                            options:UIViewAnimationOptionRepeat
+                         animations:^{
+                             self.dropDownStripe.transform = CGAffineTransformMakeTranslation(self.translateDistance, 0.0);
+                         } completion:nil
+         ];
+        
         self.activityBarToggle = 0;
     } else {
         CGRect frameRect = CGRectMake(0, 300, 320, 0);
